@@ -1,0 +1,164 @@
+.quiz-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-block: 40px;
+    gap: 20px;
+}
+
+.top-section, .middle-section, .bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.appreciation-word {
+    font-size: 40px;
+    font-weight: 300;
+    color: #373052;
+    letter-spacing: 10px;
+}
+
+.appreciation-message {
+    font-size: 20px;
+    font-weight: 500;
+    color: #373052;
+}
+
+.middle-section p {
+    font-size: 32px;
+    font-weight: 300;
+    color: #373052;
+}
+
+.failed {
+    height: 219px;
+    width: 219px;
+    border-radius: 50%;
+    border: 1px solid #D2829A;
+    justify-content: center;
+}
+
+.score {
+    font-size: 56px;
+    font-weight: 700;
+    color: #06AF52;
+}
+
+.failedCount {
+    color: #AF9B06;
+}
+
+.score-message {
+    font-size: 40px;
+    font-weight: 500;
+    color: #373052;
+}
+
+.bottom-section {
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    padding: 12px 24px;
+}
+
+.bottom-section p {
+    font-size: 24px;
+    font-weight: 500;
+    color: #373052;
+}
+
+.result-container {
+    display: flex;
+    font-size: 20px;
+    gap: 24px;
+}
+
+.result-container .count {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.result-container .count p {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.result-container .count span {
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.result-container .count .good {
+    color: #06AF52;
+}
+
+.result-container .count .average {
+    color: #AF0606;
+}
+
+.result-container .count .poor {
+    color: #8D8D8D;
+}
+
+.retake-action {
+    height: 46px;
+    background-color: #F3F3E9;
+    border: 1px solid #B92B5D;
+    color: #B92B5D;
+    padding: 8px 48px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.retake-action:hover {
+    background-color: #A8244E;
+    color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+    .quiz-result {
+        padding-block: 86px;
+        gap: 40px;
+    }
+
+    .appreciation-word {
+        font-size: 24px;
+    }
+
+    .appreciation-message {
+        font-size: 14px;
+    }
+
+    .middle-section p {
+        font-size: 24px;
+    }
+
+    .score {
+        font-size: 48px;
+    }
+
+    .score-message{
+        font-size: 32px;
+    }
+
+    .bottom-section p {
+        font-size: 18px;
+    }
+
+    .result-container {
+        gap: 16px;
+    }
+
+    .result-container .count p {
+        font-size: 16px;
+    }
+
+    .result-container .count span {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,40 @@
+.question-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 850px;
+}
+
+.question {
+    display: flex;
+    gap: 15px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #373052;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 30px;
+}
+
+.options label {
+    font-size: 20px;
+    height: 56px;
+    width: 100%;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    padding: 18px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.options input[type="radio"] {
+    accent-color: #B92B5D;
+    width: 18px;
+    height: 18px;
+}

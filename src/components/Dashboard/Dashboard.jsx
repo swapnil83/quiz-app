@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import QuizRules from '../QuizRules/QuizRules';
 import './Dashboard.css';
 
 const Dashboard = (props) => {
-    const { inputData, setInputData, isModalOpen, setIsModalOpen } = props;
+    const { inputData, setInputData, isModalOpen, setIsModalOpen, setEnableExitAction, setQuizStart } = props;
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -17,7 +19,9 @@ const Dashboard = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Form Data:', inputData);
+        setEnableExitAction(true);
+        setQuizStart(true)
+        navigate('/quiz');
     };
 
     const isFormValid = inputData.fullName && inputData.category;
@@ -43,7 +47,7 @@ const Dashboard = (props) => {
                     <p>Please select topic to continue</p>
                     <div className="topics">
                         {
-                            ['Javascript Basic', 'Angular Basic', 'React.js Advance', 'Flutter'].map((topicName, id) => {
+                            ['JavaScript Basics', 'Angular Basics', 'React.js Advance', 'Flutter'].map((topicName, id) => {
                                 return(
                                     <label key={id}>
                                         <input 
