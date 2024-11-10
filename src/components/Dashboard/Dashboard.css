@@ -1,0 +1,160 @@
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-block: 60px;
+    gap: 28px;
+}
+
+.greeting {
+    font-size: 64px;
+    font-weight: 500;
+}
+
+.initial-word {
+    color: #B92B5D;
+    font-weight: 250;
+}
+
+.last-word {
+    color: #B92B5D;
+    font-weight: 700;
+}
+
+.rules {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: #D9D9D94D;
+    padding: 12px 16px;
+    gap: 8px;
+    font-size: 20px;
+}
+
+.rules-info {
+    color: #B92B5D;
+    cursor: pointer;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 522px;
+}
+
+.user-input label {
+    font-size: 16px;
+    color: #373035;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.user-input input {
+    width: 100%;
+    padding: 13px 21px;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    color: #373035;
+    font-size: 16px;
+}
+
+.user-input input::placeholder {
+    color: #2E2E2E66;
+    font-weight: 500;
+}
+
+.topic-selection {
+    margin-bottom: 8px;
+}
+
+.topic-selection p {
+    font-size: 16px;
+    color: #373035;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.topics label {
+    font-size: 20px;
+    height: 56px;
+    width: 256px;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    padding: 18px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.topics input[type="radio"] {
+    accent-color: #B92B5D;
+    width: 18px;
+    height: 18px;
+}
+
+.start-quiz-button {
+    width: 179px;
+    height: 52px;
+    background-color: #B92B5D;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.3s;
+    opacity: 100%;
+}
+
+.button-disabled {
+    cursor: not-allowed;
+    width: 179px;
+    height: 52px;
+    background-color: #B92B5D;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    opacity: 40%;
+}
+
+.start-quiz-button:hover {
+    background-color: #A8244E;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding-block: 40px;
+        gap: 60px;
+    }
+
+    .greeting {
+        font-size: 32px;
+    }
+
+    .rules {
+        font-size: 14px;
+    }
+
+    .rules-info {
+        font-size: 16px;
+    }
+
+    .form-container {
+        width: calc(100% - 36px);
+    }
+
+    .topics label { 
+        width: 100%;
+    }
+}
