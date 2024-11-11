@@ -94,4 +94,8 @@
     .quiz-timer {
         top: 16%;
     }
+
+    .skip-btn:hover {
+        background-color: unset;
+    }
 }

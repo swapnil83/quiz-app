@@ -37,11 +37,15 @@ const QuizPage = (props) => {
     };
 
     const handleTimeUp = () => {
+        if (selectedOption === null) {
+            setUnanswered(prevUnanswered => prevUnanswered + 1);
+        }
+        
         if (currentQuestion === questions.length - 1) {
             setEnableExitAction(false);
             navigate('/result');
         } else {
-            setUnanswered(unanswered + 1);
+            setUnanswered(prevUnanswered => prevUnanswered + 1);
             setSelectedOption(null);
             handleNextQuestion({ isSkipped: true });
         }

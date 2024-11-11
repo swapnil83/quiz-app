@@ -1,16 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './Timer.css';
 
 const Timer = ({ timeLeft, setTimeLeft, onTimeUp }) => {
-    useEffect(() => {
-        if (timeLeft === 0) {
-            onTimeUp();
-            return;
-        }
+    const [hasTimeElapsed, setHasTimeElapsed] = useState(false);
 
-        const timerId = setInterval(() => setTimeLeft((prevTime) => prevTime > 0 ? prevTime - 1 : 0), 1000);
-        return () => clearInterval(timerId);
-    }, [timeLeft, setTimeLeft, onTimeUp]);
+    useEffect(() => {
+        if (timeLeft > 0) {
+            const timerId = setInterval(() => {
+                setTimeLeft((prevTime) => prevTime > 0 ? prevTime - 1 : 0);
+            }, 1000);
+            return () => clearInterval(timerId);
+        } else if (timeLeft === 0 && !hasTimeElapsed) {
+            setHasTimeElapsed(true);
+            onTimeUp();
+        }
+    }, [timeLeft, setTimeLeft, onTimeUp, hasTimeElapsed]);
+
+    useEffect(() => {
+        if (timeLeft > 0 && hasTimeElapsed) {
+            setHasTimeElapsed(false);
+        }
+    }, [timeLeft]);
 
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
