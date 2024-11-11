@@ -18,10 +18,15 @@ const Dashboard = (props) => {
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        setEnableExitAction(true);
-        setQuizStart(true)
-        navigate('/quiz');
+        if (isFormValid) {
+            event.preventDefault();
+            setEnableExitAction(true);
+            setQuizStart(true)
+            navigate('/quiz');
+        } else {
+            event.preventDefault();
+            return;
+        }
     };
 
     const isFormValid = inputData.fullName && inputData.category;
@@ -48,13 +53,13 @@ const Dashboard = (props) => {
                     <div className="topics">
                         {
                             ['JavaScript Basics', 'Angular Basics', 'React.js Advance', 'Flutter'].map((topicName, id) => {
-                                return(
+                                return (
                                     <label key={id}>
-                                        <input 
-                                            type="radio" 
+                                        <input
+                                            type="radio"
                                             name="category"
                                             value={topicName}
-                                            onChange={handleChange} 
+                                            onChange={handleChange}
                                         /> {topicName}
                                     </label>
                                 )
@@ -62,9 +67,7 @@ const Dashboard = (props) => {
                         }
                     </div>
                 </div>
-                <button 
-                    className={isFormValid ? 'start-quiz-button' : 'button-disabled' }
-                >
+                <button className={isFormValid ? 'start-quiz-button' : 'button-disabled'}>
                     Start Quiz
                 </button>
             </form>

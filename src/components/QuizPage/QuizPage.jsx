@@ -32,28 +32,39 @@ const QuizPage = (props) => {
             setTimeLeft(10);
         } else {
             setEnableExitAction(false);
-            navigate('/result');
+            // navigate('/result');
         }
     };
 
     const handleTimeUp = () => {
-        setUnanswered(unanswered + 1);
-        setSelectedOption(null);
-        handleNextQuestion({ isSkipped: true });
+        if (currentQuestion === questions.length - 1) {
+            setEnableExitAction(false);
+            navigate('/result');
+        } else {
+            setUnanswered(unanswered + 1);
+            setSelectedOption(null);
+            handleNextQuestion({ isSkipped: true });
+        }
     };
 
     return (
         <div className='quiz-page'>
-            {/* <Timer timeLeft={timeLeft} setTimeLeft={setTimeLeft} onTimeUp={handleTimeUp} />
-            <QuestionProgressBar currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} /> */}
+            <div>
+                <div className='progress-bar'>
+                    <QuestionProgressBar currentQuestion={currentQuestion+1} setCurrentQuestion={setCurrentQuestion} />
+                </div>
+                <div className='quiz-timer'>
+                    <Timer timeLeft={timeLeft} setTimeLeft={setTimeLeft} onTimeUp={(handleTimeUp)} />
+                </div>
+            </div>
             <Question
                 questionData={questions[currentQuestion]}
                 setSelectedOption={setSelectedOption}
                 selectedOption={selectedOption}
             />
             <div className='quiz-actions'>
-                <button 
-                    className={selectedOption ? 'next-btn': 'next-button-disabled'} 
+                <button
+                    className={selectedOption !== null ? 'next-btn' : 'next-button-disabled'}
                     onClick={() => handleNextQuestion({ isSkipped: false })}
                 >
                     {currentQuestion === questions.length - 1 ? 'Finish' : 'Next'}

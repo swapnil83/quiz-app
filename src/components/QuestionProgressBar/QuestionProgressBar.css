@@ -1,0 +1,35 @@
+.question-progress-bar {
+    width: 100%;
+    padding: 10px;
+}
+
+.progress {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.bar-container {
+    height: 8px;
+    background-color: #E9E8E3;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.filled-bar {
+    height: 100%;
+    background-color: #B92B5D;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.current-question {
+    font-size: 32px;
+    font-weight: 500;
+    color: #B92B5D;
+}
+
+.total-questions {
+    font-size: 24px;
+    font-weight: 500;
+    color: #373052; 
+}
