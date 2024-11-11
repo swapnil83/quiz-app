@@ -3,15 +3,10 @@ import './Header.css';
 import quizLogo from '../../assets/images/QUIZMania.png';
 
 const Header = (props) => {
-    const { enableExitAction, setEnableExitAction, inputData, setInputData, quizStart, setQuizStart } = props;
+    const { enableExitAction, inputData, quizStart, onExit } = props;
 
     const handleExitAction = () => {
-        setEnableExitAction(false);
-        setQuizStart(false);
-        setInputData({
-            fullName: '',
-            category: ''
-        })
+        onExit();
         window.history.back();
     };
 

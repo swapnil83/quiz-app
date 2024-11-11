@@ -1,9 +1,10 @@
 import React from "react";
 import './Question.css';
 
-const Question = ({ questionData, onAnswer }) => {
-    const handleOptionClick = (index) => {
-        onAnswer(index);
+const Question = ({ questionData, setSelectedOption, selectedOption }) => {
+
+    const handleOptionChange = (option) => {
+        setSelectedOption(option);
     };
 
     return (
@@ -15,11 +16,14 @@ const Question = ({ questionData, onAnswer }) => {
             </div>
             <div className="options">
                 {questionData.options.map((option, index) => (
-                    <label key={index} onClick={() => handleOptionClick(option)}>
+                    <label key={index} htmlFor={`option-${index}`}>
                         <input
                             type="radio"
-                            name="option"
+                            id={`option-${index}`}
+                            name={`option-${questionData.id}`}
                             value={option}
+                            checked={selectedOption === option}
+                            onChange={() => handleOptionChange(option)}
                         /> {option}
                     </label>
                 ))}

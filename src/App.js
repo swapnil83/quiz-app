@@ -14,16 +14,37 @@ function App() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [enableExitAction, setEnableExitAction] = useState(false);
     const [quizStart, setQuizStart] = useState(false);
+    const [score, setScore] = useState(0);
+    const [unanswered, setUnanswered] = useState(0);
+
+    const onExit = () => {
+        setEnableExitAction(false);
+        setInputData({
+            fullName: '',
+            category: ''
+        });
+        setQuizStart(false);
+        setScore(0);
+        setUnanswered(0);
+    };
+
+    const onRetakeQuiz = () => {
+        setInputData({
+            fullName: '',
+            category: ''
+        });
+        setQuizStart(false);
+        setScore(0);
+        setUnanswered(0);
+    };
 
     return (
         <div className='app'>
             <Header
                 enableExitAction={enableExitAction}
-                setEnableExitAction={setEnableExitAction}
                 inputData={inputData}
-                setInputData={setInputData}
                 quizStart={quizStart}
-                setQuizStart={setQuizStart}
+                onExit={onExit}
             />
             <BrowserRouter
                 future={{
@@ -48,7 +69,12 @@ function App() {
                         path='/quiz'
                         element={
                             <QuizPage
+                                setEnableExitAction={setEnableExitAction}
                                 inputData={inputData}
+                                score={score}
+                                setScore={setScore}
+                                unanswered={unanswered}
+                                setUnanswered={setUnanswered}
                             />
                         }
                     />
@@ -56,6 +82,9 @@ function App() {
                         path='/result'
                         element={
                             <QuizResult
+                                score={score}
+                                unanswered={unanswered}
+                                onRetakeQuiz={onRetakeQuiz}
                             />
                         }
                     />

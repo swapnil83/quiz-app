@@ -38,3 +38,21 @@
     width: 18px;
     height: 18px;
 }
+
+@media (max-width: 768px) {
+    .question-container {
+        max-width: unset;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+
+    .options {
+        margin-left: 0;
+    }
+
+    .options label {
+        font-size: 16px;
+    }
+}

@@ -1,60 +1,49 @@
-import React, { Fragment } from 'react';
-import './QuizResult.css';
+import React from 'react';
 import goodResultLogo from '../../assets/images/goodResultLogo.png';
 import poorResultLogo from '../../assets/images/poorResultLogo.png';
 import { useNavigate } from 'react-router-dom';
+import './QuizResult.css';
 
-const QuizResult = (props) => {
+const QuizResult = ({ score, unanswered, onRetakeQuiz }) => {
     const navigate = useNavigate();
-    const { score = 8, unanswered = 1 } = props;
+
     const failed = 10 - score - unanswered;
     const percentage = (score / 10) * 100;
-    let resultLogo;
 
-    if (percentage >= 80) {
-        resultLogo = goodResultLogo;
-    } else if (percentage < 80 && percentage >= 60) {
-        resultLogo = goodResultLogo;
-    } else if (percentage < 60) {
-        resultLogo = poorResultLogo;
-    }
+    const resultLogo = percentage >= 60 ? goodResultLogo : poorResultLogo;
+    const isGoodScore = percentage >= 60;
 
     const handleRetakeAction = () => {
+        onRetakeQuiz();
         navigate('/');
     };
 
     return (
         <div className='quiz-result'>
             <div className='top-section'>
-                <img src={resultLogo} alt='Good Result' />
-                {
-                    ((percentage >= 80) || (percentage < 80 && percentage >= 60))
-                    &&
-                    <Fragment>
+                <img
+                    src={resultLogo}
+                    alt={isGoodScore ? 'Good Result' : 'Poor Result'}
+                />
+                {isGoodScore ? (
+                    <>
                         <div className='appreciation-word'>CONGRATULATIONS</div>
-                        <div className='appreciation-message'>You successfully completed the Quiz and holds</div>
-                    </Fragment>
-                }
-                {
-                    (percentage < 60)
-                    &&
-                    <Fragment>
+                        <div className='appreciation-message'>You successfully completed the Quiz and hold</div>
+                    </>
+                ) : (
+                    <>
                         <div className='appreciation-message'>You successfully completed the Quiz but you need to</div>
                         <div className='appreciation-word'>KEEP PRACTICING!</div>
-                    </Fragment>
-                }
+                    </>
+                )}
             </div>
-            <div className={`middle-section ${(percentage < 60) ? 'failed' : ''}`}>
+            <div className={`middle-section ${!isGoodScore ? 'failed' : ''}`}>
                 <p>Your Score</p>
-                <div className={`score ${(percentage < 60) ? 'failedCount' : ''}`}>{percentage}%</div>
-                {
-                    ((percentage >= 80) || (percentage < 80 && percentage >= 60))
-                    &&
-                    <div className='score-message'>Great job!</div>
-                }
+                <div className={`score ${!isGoodScore ? 'failedCount' : ''}`}>{percentage}%</div>
+                {isGoodScore && <div className='score-message'>Great job!</div>}
             </div>
             <div className='bottom-section'>
-                <p>Out of 10 question</p>
+                <p>Out of 10 questions</p>
                 <div className='result-container'>
                     <div className='count'>
                         <span className='good'>{score}</span>
@@ -72,7 +61,7 @@ const QuizResult = (props) => {
             </div>
             <button className='retake-action' onClick={handleRetakeAction}>Retake Quiz</button>
         </div>
-    )
+    );
 }
 
 export default QuizResult;
