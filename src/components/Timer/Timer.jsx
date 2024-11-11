@@ -20,7 +20,7 @@ const Timer = ({ timeLeft, setTimeLeft, onTimeUp }) => {
         if (timeLeft > 0 && hasTimeElapsed) {
             setHasTimeElapsed(false);
         }
-    }, [timeLeft]);
+    }, [timeLeft, hasTimeElapsed]);
 
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
