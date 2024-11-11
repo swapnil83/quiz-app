@@ -32,7 +32,7 @@ const QuizPage = (props) => {
             setTimeLeft(10);
         } else {
             setEnableExitAction(false);
-            // navigate('/result');
+            navigate('/result');
         }
     };
 
